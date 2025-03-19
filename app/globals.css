@@ -1,2 +1,39 @@
 @import "tailwindcss";
 
+.hom-con {
+  background-image: url("/Body\ bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg {
+  background-color: #181818;
+}
+
+.info {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 300ms ease-in-out;
+}
+
+.info::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgb(0, 180, 0);
+  transition: width 300ms ease-in-out;
+}
+
+.info:hover {
+  color: rgb(0, 180, 0);
+  cursor: pointer;
+}
+
+.info:hover::after {
+  width: 100%;
+}

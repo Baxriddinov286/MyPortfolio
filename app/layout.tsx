@@ -3,6 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Saidbar from "./_Components/Saidbar";
 import Navbar from "./_Components/Navbar";
+// import localFont from "next/font/local";
+
+// const MyFOnt = localFont({
+//   src: "/public/fonts/NeueMachina-Ultrabold.otf",
+//   display: "swap",
+// });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
