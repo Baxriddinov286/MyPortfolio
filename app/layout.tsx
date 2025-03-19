@@ -29,11 +29,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="w-full">
+        <div className="w-[1535.3] mx-auto h-screen overflow-hidden">
           <Navbar />
-          <div className="flex gap-4 ">
+          <div className="flex">
             <Saidbar />
-            <div>{children}</div>
+            <div className="w-full">{children}</div>
           </div>
         </div>
       </body>
