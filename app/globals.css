@@ -11,6 +11,11 @@
   background-color: #181818;
 }
 
+.bg1 {
+  background-color: #181818;
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
+
 .info {
   display: inline-block;
   position: relative;
@@ -36,4 +41,98 @@
 
 .info:hover::after {
   width: 100%;
+}
+
+.MyInfo {
+  font-family: Poppins;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.MyInfo2 {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  margin-top: 16px;
+  line-height: normal;
+}
+
+.IfoBtn {
+  width: 169;
+  height: 43;
+  padding-top: 8px;
+  padding-right: 44px;
+  padding-bottom: 8px;
+  padding-left: 44px;
+  gap: 10px;
+  border-radius: 8px;
+  background: rgba(57, 150, 95, 1);
+  margin-top: 16px;
+}
+
+.SadibarLogo {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom-width: 1px;
+  border-right: none;
+}
+
+.SadibarLogo h1 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  margin-bottom: 7px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.SaidbarBtn {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+  width: auto;
+  min-width: 50px;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.MyAdrees {
+  width: 260;
+  height: 47;
+  gap: 10px;
+  display: flex;
+  justify-content: start;
+  color: #fff;
+}
+
+.MyAdrees h4 {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.MyAdrees h2 {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
 }

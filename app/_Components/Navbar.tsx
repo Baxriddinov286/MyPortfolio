@@ -3,6 +3,7 @@ import "../globals.css";
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaGithub } from "react-icons/fa";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
