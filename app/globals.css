@@ -195,9 +195,67 @@ html {
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(27, 27, 27, 1);
-  /* width: 213; */
   height: 124;
   border-radius: 12px;
   border-width: 1px;
   padding: 20px;
+}
+
+.mywork {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(27, 27, 27, 1);
+  height: 124;
+  border-radius: 12px;
+  border-width: 1px;
+  padding: 20px;
+}
+
+.mywork h2 {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 6px;
+}
+
+.mywork p {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.MyAddres {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MyAddres div {
+  width: 290.6666564941406;
+  height: 190;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-radius: 12px;
+  border-width: 1px;
+  background: rgba(27, 27, 27, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.MyAddres div p {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
 }

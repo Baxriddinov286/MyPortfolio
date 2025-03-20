@@ -136,25 +136,76 @@ export default function About() {
             />
           </div>
           <div className="ProgramLogo">
-            {/* <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/antdesign/antdesign-original.svg"
+            <Image
+              src="https://raw.githubusercontent.com/Remix-Design/RemixIcon/master/icons/Logos/remixicon-line.svg"
               alt="Html Logo"
               width={64}
               height={64}
-            /> */}
+            />
           </div>
           <div className="ProgramLogo">
-            {/* <Image
-              src="https://avatars.githubusercontent.com/u/54212428?s=280&v=4"
+            <Image
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubcodespaces/githubcodespaces-original.svg"
               alt="Html Logo"
               width={64}
               height={64}
-              className="rounded-full"
-            /> */}
+            />
           </div>
         </div>
       </div>
-      
+      <div className="AboutMe mb-16">
+        <h1>Men nimalar qila olaman</h1>
+        <div className="grid grid-cols-2 gap-5">
+          <div className="mywork">
+            <Image
+              src="/image wrapper.svg"
+              alt="Html Logo"
+              width={64}
+              height={64}
+            />
+            <div>
+              <h2>Seo</h2>
+              <p>Qidiruv tizimining natijalarida sayt reytingini yaxshilash</p>
+            </div>
+          </div>
+          <div className="mywork">
+            <Image
+              src="/image wrapper (1).svg"
+              alt="Html Logo"
+              width={64}
+              height={64}
+            />
+            <div>
+              <h2>Dizayn</h2>
+              <p>Kuchli dizayn va kichik detallargacha e’tibor berish </p>
+            </div>
+          </div>
+          <div className="mywork">
+            <Image
+              src="/image wrapper (2).svg"
+              alt="Html Logo"
+              width={64}
+              height={64}
+            />
+            <div>
+              <h2>Sifat</h2>
+              <p>Yuqori darajada saytlarni sifatli ishlab chiqish</p>
+            </div>
+          </div>
+          <div className="mywork">
+            <Image
+              src="/image wrapper (3).svg"
+              alt="Html Logo"
+              width={64}
+              height={64}
+            />
+            <div>
+              <h2>Tezkorlik</h2>
+              <p>Qisqa muddat ichida tezkor sayt ishlab chiqish</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
