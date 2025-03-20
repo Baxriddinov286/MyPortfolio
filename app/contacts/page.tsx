@@ -43,6 +43,26 @@ export default function Contacts() {
           </div>
         </div>
       </div>
+      <div className="AboutMe mb-16">
+        <h1>So’rov yuborish </h1>
+        <div className="request">
+          <div>
+            <label className="flex flex-col gap-2">
+              Ismingiz*
+              <input type="text" placeholder="Falonchiyev Falonchi" />
+            </label>
+            <label className="flex flex-col gap-2">
+              Manzilingiz*
+              <input type="text" placeholder="misol@gmail.com" />
+            </label>
+          </div>
+          <label className="flex flex-col gap-2">
+            Izohingiz*
+            <textarea placeholder="O’z izohingizni yozing..."></textarea>
+          </label>
+          <button>Yuborish</button>
+        </div>
+      </div>
     </div>
   );
 }

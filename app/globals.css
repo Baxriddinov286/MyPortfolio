@@ -3,6 +3,9 @@
 ::-webkit-scrollbar {
   display: none;
 }
+* {
+  outline: none;
+}
 
 html {
   scrollbar-width: none;
@@ -258,4 +261,66 @@ html {
   letter-spacing: 0px;
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.request {
+  min-height: 420;
+  border-radius: 12px;
+  border-width: 1px;
+  padding: 20px;
+  background: rgba(27, 27, 27, 1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.request div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.request label {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.request input {
+  width: 525px;
+  height: 44;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  border-radius: 8px;
+  border-width: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+.request textarea {
+  height: 192;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  border-radius: 8px;
+  border-width: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.request button {
+  width: 158;
+  height: 40;
+  padding-top: 8px;
+  padding-right: 44px;
+  padding-bottom: 8px;
+  padding-left: 44px;
+  gap: 10px;
+  border-radius: 8px;
+  background: rgba(57, 150, 95, 1);
+  margin-top: 20px;
+  cursor: pointer;
 }
