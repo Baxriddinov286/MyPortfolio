@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Home() {
@@ -16,7 +17,9 @@ export default function Home() {
         <br />
         yondashuv muhim o‘rin tutadi. 🚀
       </p>
-      <button className="IfoBtn">Loyihalar</button>
+      <Link href={"/projects"} className="IfoBtn">
+        Loyihalar
+      </Link>
     </div>
   );
 }

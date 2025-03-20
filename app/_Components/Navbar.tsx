@@ -15,10 +15,18 @@ const Navbar = () => {
         </h1>
       </div>
       <div className="flex gap-4 font-medium text-lg">
-        <h2 className="info">Bosh sahifa</h2>
-        <h2 className="info">Haqida</h2>
-        <h2 className="info">Loyihalar</h2>
-        <h2 className="info">Bog’lanish</h2>
+        <Link href={"/"} className="info">
+          Bosh sahifa
+        </Link>
+        <Link href={"/about"} className="info">
+          Haqida
+        </Link>
+        <Link href={"/projects"} className="info">
+          Loyihalar
+        </Link>
+        <Link href={"/contacts"} className="info">
+          Bog’lanish
+        </Link>
         <FaGithub className="text-3xl cursor-pointer  " />
       </div>
     </div>
