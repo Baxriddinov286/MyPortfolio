@@ -4,8 +4,8 @@ import "../globals.css";
 
 export default function Saidbar() {
   return (
-    <div className="w-[288] h-[719] mx-auto bg1">
-      <div className="border border-gray-700 w-full p-3.5 SadibarLogo">
+    <div className="w-[288px] h-[92.5vh] mx-auto bg1 hidden md:block lg:block">
+      <div className="w-full p-3.5 SadibarLogo">
         <Image
           src="/photo_2025-03-12_20-58-07.jpg"
           alt="logo"
@@ -55,7 +55,16 @@ export default function Saidbar() {
           />
           <div className="overflow-hidden">
             <h4>Telegram</h4>
-            <h2>https://t.me/bekzod_baxriddinov</h2>
+            <h2>
+              {" "}
+              <a
+                href="https://t.me/bekzod_baxriddinov"
+                target="_blank"
+                className="text-blue-500 hover:underline"
+              >
+                @bekzod_baxriddinov
+              </a>
+            </h2>
           </div>
         </div>
         <div className="MyAdrees">
