@@ -236,7 +236,6 @@ html {
 .mywork {
   display: flex;
   align-items: center;
-  justify-content: start;
   gap: 14px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(27, 27, 27, 1);

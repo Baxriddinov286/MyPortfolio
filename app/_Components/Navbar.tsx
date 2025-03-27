@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="absolute top-14 left-0 w-full bg-black flex flex-col items-center gap-4 py-4 lg:hidden z-50">
+        <div className="absolute top-14 left-0 w-full bg flex flex-col items-center gap-4 py-4 lg:hidden z-50">
           <a href="/" className="info " onClick={() => setIsOpen(false)}>
             Bosh sahifa
           </a>
@@ -65,11 +65,7 @@ const Navbar = () => {
           >
             Loyihalar
           </a>
-          <a
-            href="/contacts"
-            className="hover:text-green-500 transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
+          <a href="/contacts" className="info" onClick={() => setIsOpen(false)}>
             Bog‘lanish
           </a>
           <a
@@ -78,7 +74,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="text-3xl cursor-pointer"
           >
-            🖥
+            <FaGithub />
           </a>
         </div>
       )}
