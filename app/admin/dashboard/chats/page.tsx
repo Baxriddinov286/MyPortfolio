@@ -1,33 +1,41 @@
 "use client";
 import { createClient } from "@/supabase/client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+
+interface Chat {
+  id: string;
+  name: string;
+  address: string;
+  message: string;
+  date: string;
+}
 
 export default function Page() {
-  const [chats, setChats] = useState<any[]>([]);
+  const [chats, setChats] = useState<Chat[]>([]);
   const router = useRouter();
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchChats();
-  }, []);
-
-  const fetchChats = async () => {
+  const fetchChats = useCallback(async () => {
     const { data, error } = await supabase.from("PortfolioChats").select("*");
     if (error) {
-      console.log(error);
+      console.error(error);
     } else {
       setChats(data);
     }
-  };
+  }, [supabase]);
 
-  const deleteChat = async (id: number) => {
+  useEffect(() => {
+    fetchChats();
+  }, [fetchChats]);
+
+  const deleteChat = async (id: string) => {
     const { error } = await supabase
       .from("PortfolioChats")
       .delete()
       .match({ id });
     if (error) {
-      console.log(error);
+      console.error(error);
     } else {
       setChats((prevChats) => prevChats.filter((chat) => chat.id !== id));
     }

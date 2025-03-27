@@ -50,27 +50,24 @@ export default function Page() {
       return;
     }
 
-    let response;
-    if (formData.id) {
-      response = await supabase
-        .from("Portfolio_Project")
-        .update({
-          img: formData.img,
-          name: formData.name,
-          level: formData.level,
-          library: formData.library,
-        })
-        .eq("id", formData.id);
-    } else {
-      response = await supabase.from("Portfolio_Project").insert([
-        {
-          img: formData.img,
-          name: formData.name,
-          level: formData.level,
-          library: formData.library,
-        },
-      ]);
-    }
+    const response = formData.id
+      ? await supabase
+          .from("Portfolio_Project")
+          .update({
+            img: formData.img,
+            name: formData.name,
+            level: formData.level,
+            library: formData.library,
+          })
+          .eq("id", formData.id)
+      : await supabase.from("Portfolio_Project").insert([
+          {
+            img: formData.img,
+            name: formData.name,
+            level: formData.level,
+            library: formData.library,
+          },
+        ]);
 
     if (response.error) {
       toast.error("Xatolik yuz berdi!");
