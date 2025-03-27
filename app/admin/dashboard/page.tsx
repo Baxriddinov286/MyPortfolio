@@ -30,57 +30,59 @@ export default function Page() {
   }, [fetchCounts]);
 
   return (
-    <div className="w-full h-[92vh] hom-con overflow-y-scroll text-white p-5 md:p-10">
-      <div className="AboutMe">
-        <h1 className="text-2xl font-bold mb-5"> Xush kelibsiz, Admin!</h1>
+    <div className="w-full min-h-screen hom-con overflow-y-scroll text-white p-5 md:p-10">
+      <div className="AboutMe text-center">
+        <h1 className="text-2xl font-bold mb-5">Xush kelibsiz, Admin!</h1>
       </div>
 
-      <div className="max-w-full grid grid-cols-2 gap-6 mx-auto">
-        <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-semibold mb-4">Asbob uskunalar</h1>
+      <div className="max-w-full grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto">
+        <div className="bg-neutral-800 p-4 md:p-6 rounded-2xl shadow-lg text-center">
+          <h1 className="text-xl md:text-3xl font-semibold mb-4">
+            Asbob uskunalar
+          </h1>
           <Link
             href={"/admin/dashboard/instrument"}
-            className="block text-center w-50 px-6 py-2 bg-green-600 text-white rounded-lg"
+            className="inline-block w-full md:w-auto px-6 py-2 bg-green-600 text-white rounded-lg"
           >
             Uskuna qo`shish
           </Link>
-          <p className="mt-2">Uskunalar: {insCount}</p>
+          <p className="mt-2 text-lg">Uskunalar: {insCount}</p>
         </div>
 
-        <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-semibold mb-4">Loyihalar</h1>
+        <div className="bg-neutral-800 p-4 md:p-6 rounded-2xl shadow-lg text-center">
+          <h1 className="text-xl md:text-3xl font-semibold mb-4">Loyihalar</h1>
           <Link
             href={"/admin/dashboard/project"}
-            className="block text-center w-50 px-6 py-2 bg-blue-600 text-white rounded-lg"
+            className="inline-block w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded-lg"
           >
             Loyiha qo‘shish 🚀
           </Link>
-          <p className="mt-2">Loyihlar: {projectCount}</p>
+          <p className="mt-2 text-lg">Loyihalar: {projectCount}</p>
         </div>
 
-        <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-semibold mb-4">Xabarlar</h1>
+        <div className="bg-neutral-800 p-4 md:p-6 rounded-2xl shadow-lg text-center">
+          <h1 className="text-xl md:text-3xl font-semibold mb-4">Xabarlar</h1>
           <Link
-            href={"/admin/dashboard"}
-            onClick={() => (location.href = "/admin/dashboard/chats")}
-            className="block text-center w-50 px-6 py-2 bg-red-600 text-white rounded-lg"
+            href={"/admin/dashboard/chats"}
+            className="inline-block w-full md:w-auto px-6 py-2 bg-red-600 text-white rounded-lg"
           >
             Xabarlar
           </Link>
-          <p className="mt-2">Chatlar: {chatCount}</p>
+          <p className="mt-2 text-lg">Chatlar: {chatCount}</p>
         </div>
 
-        <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-semibold mb-4">Mijozlar</h1>
+        <div className="bg-neutral-800 p-4 md:p-6 rounded-2xl shadow-lg text-center">
+          <h1 className="text-xl md:text-3xl font-semibold mb-4">Mijozlar</h1>
           <Link
             href={"/admin/dashboard/client"}
-            className="block text-center w-50 px-6 py-2 bg-purple-600 text-white rounded-lg"
+            className="inline-block w-full md:w-auto px-6 py-2 bg-purple-600 text-white rounded-lg"
           >
             Mijoz qo`shish
           </Link>
-          <p className="mt-2">Mijozalar: {clientCount}</p>
+          <p className="mt-2 text-lg">Mijozlar: {clientCount}</p>
         </div>
       </div>
     </div>
   );
 }
+  

@@ -90,8 +90,10 @@ export default function ClientsPage() {
     <div className="w-full h-[92vh] overflow-y-scroll text-white p-5 md:p-10">
       <ToastContainer position="top-right" autoClose={3000} />
 
-      <div className="AboutMe flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Mijozlar</h1>
+      <div className="AboutMe flex flex-col sm:flex-row justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-center sm:text-left">
+          Mijozlar
+        </h1>
         <div className="flex gap-2">
           <button
             onClick={() => {
@@ -122,6 +124,8 @@ export default function ClientsPage() {
           color: "#fff",
           borderRadius: "10px",
           padding: "20px",
+          width: "90%",
+          maxWidth: "400px",
         }}
       >
         <h2 className="text-xl font-bold mb-4 text-center">
@@ -157,7 +161,7 @@ export default function ClientsPage() {
         </div>
       </Rodal>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
         {clients.map((client) => (
           <div
             key={client.id}

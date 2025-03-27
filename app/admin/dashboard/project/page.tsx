@@ -128,9 +128,11 @@ export default function Page() {
     <div className="w-full h-[92vh] overflow-y-scroll text-white p-5 md:p-10">
       <ToastContainer position="top-right" autoClose={3000} />
 
-      <div className="AboutMe mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Loyihalar 🚀</h1>
-        <div className="flex gap-2">
+      <div className="AboutMe flex flex-col sm:flex-row justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-center sm:text-left">
+          Loyihalar 🚀
+        </h1>
+        <div className="flex gap-2 mt-3 sm:mt-0">
           <button
             onClick={() => {
               setFormData({ img: "", name: "", level: "", library: [] });
@@ -153,7 +155,7 @@ export default function Page() {
         {projects.map((project) => (
           <div
             key={project.id}
-            className="bg shadow-xl rounded-xl overflow-hidden flex flex-col justify-between"
+            className="bg project shadow-xl rounded-xl overflow-hidden flex flex-col justify-between"
           >
             <div className="relative w-full h-56">
               <Image
@@ -202,12 +204,14 @@ export default function Page() {
         onClose={() => setModalOpen(false)}
         animation="zoom"
         width={400}
-        height={500}
+        height={350}
         customStyles={{
           background: "#1a1a1a",
           color: "#fff",
           borderRadius: "10px",
           padding: "20px",
+          width: "90%",
+          maxWidth: "400px",
         }}
       >
         <h2 className="text-xl font-bold mb-4 text-center">

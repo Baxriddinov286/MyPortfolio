@@ -23,7 +23,10 @@ const Navbar = () => {
           ☰
         </button>
 
-        <h1 className="font-medium text-xl cursor-pointer">
+        <h1
+          className="font-medium text-xl cursor-pointer"
+          onClick={() => (location.href = "/")}
+        >
           Baxriddinov<span className="text-green-500">.Uz</span>
         </h1>
       </div>

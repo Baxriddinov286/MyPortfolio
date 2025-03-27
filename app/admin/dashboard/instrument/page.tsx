@@ -92,15 +92,17 @@ export default function Page() {
     <div className="w-full h-[92vh] hom-con overflow-y-scroll text-white p-5 md:p-10">
       <ToastContainer position="top-right" autoClose={3000} />
 
-      <div className="AboutMe mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Asbob uskunalar</h1>
-        <div className="flex gap-2">
+      <div className="AboutMe flex flex-col sm:flex-row justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-center sm:text-left">
+          Asbob uskunalar
+        </h1>
+        <div className="flex gap-2 mt-3 sm:mt-0">
           <button
             onClick={() => {
               setFormData({ img: "", name: "" });
               setModalOpen(true);
             }}
-            className="px-6 py-2 bg-green-600 text-white rounded-lg"
+            className="px-4 py-2 bg-green-600 text-white rounded-lg"
           >
             Uskuna qo`shish+
           </button>
@@ -124,6 +126,8 @@ export default function Page() {
           color: "#fff",
           borderRadius: "10px",
           padding: "20px",
+          width: "90%",
+          maxWidth: "400px",
         }}
       >
         <h2 className="text-xl font-bold mb-4 text-center">
@@ -159,7 +163,7 @@ export default function Page() {
         </div>
       </Rodal>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
         {instruments.map((instrument) => (
           <div
             key={instrument.id}
@@ -182,7 +186,7 @@ export default function Page() {
               )}
             </div>
 
-            <div className="flex justify-between mt-2">
+            <div className="flex justify-between mt-2 w-full">
               <button
                 onClick={() => handleDeleteInstrument(instrument.id!)}
                 className="bg-red-600 px-3 py-1 rounded"
