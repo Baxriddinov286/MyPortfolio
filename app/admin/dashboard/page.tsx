@@ -1,7 +1,7 @@
 "use client";
 import { createClient } from "@/supabase/client";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
   const [insCount, setInsCount] = useState(0);
@@ -10,44 +10,21 @@ export default function Page() {
   const [clientCount, setClientCount] = useState(0);
   const supabase = createClient();
 
+  const fetchCounts = useCallback(async () => {
+    const fetchData = async (table: any, setter: any) => {
+      const { data, error } = await supabase.from(table).select("*");
+      if (!error) setter(data.length);
+    };
+
+    await fetchData("Partfolio_Instrument", setInsCount);
+    await fetchData("PortfolioChats", setChatCount);
+    await fetchData("Portfolio_Project", setProjectCount);
+    await fetchData("Portfolio_Client", setClientCount);
+  }, [supabase]);
+
   useEffect(() => {
-    chatsCounts();
-    InsCounts();
-    clientsCounts();
-    projectsCounts();
-  }, [insCount, chatCount, projectCount, clientCount]);
-
-  const InsCounts = async () => {
-    const { data, error } = await supabase
-      .from("Partfolio_Instrument")
-      .select("*");
-    if (!error) {
-      setInsCount(data.length);
-    }
-  };
-
-  const chatsCounts = async () => {
-    const { data, error } = await supabase.from("PortfolioChats").select("*");
-    if (!error) {
-      setChatCount(data.length);
-    }
-  };
-
-  const clientsCounts = async () => {
-    const { data, error } = await supabase.from("Portfolio_Client").select("*");
-    if (!error) {
-      setClientCount(data.length);
-    }
-  };
-
-  const projectsCounts = async () => {
-    const { data, error } = await supabase
-      .from("Portfolio_Project")
-      .select("*");
-    if (!error) {
-      setProjectCount(data.length);
-    }
-  };
+    fetchCounts();
+  }, [fetchCounts]);
 
   return (
     <div className="w-full h-[92vh] hom-con overflow-y-scroll text-white p-5 md:p-10">
@@ -96,7 +73,7 @@ export default function Page() {
             href={"/admin/dashboard/client"}
             className="block text-center w-50 px-6 py-2 bg-purple-600 text-white rounded-lg"
           >
-            Mijoz qo'shish
+            Mijoz qo`&lsquo;`shish
           </Link>
           <p className="mt-2">Mijozalar: {clientCount}</p>
         </div>
