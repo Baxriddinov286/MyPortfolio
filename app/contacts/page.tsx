@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { createClient } from "./../../supabase/client";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contacts() {
   const [formData, setFormData] = useState({
@@ -10,9 +11,28 @@ export default function Contacts() {
     address: "",
     message: "",
   });
+
   const supabase = createClient();
 
   const handleChange = async () => {
+    let errors = [];
+
+    if (!formData.name.trim()) errors.push("Ismingizni kiriting!");
+    if (!formData.address.trim()) errors.push("Manzilingizni kiriting!");
+    if (!formData.message.trim()) errors.push("Izoh qoldiring!");
+
+    if (
+      formData.address.trim() &&
+      !/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(formData.address)
+    ) {
+      errors.push("Email faqat @gmail.com bilan tugashi kerak!");
+    }
+
+    if (errors.length > 0) {
+      toast.error(errors.join(" "));
+      return;
+    }
+
     const { error } = await supabase.from("PortfolioChats").insert([
       {
         name: formData.name,
@@ -23,21 +43,21 @@ export default function Contacts() {
     ]);
 
     if (error) {
-      console.error("Xatolik:", error.message);
+      toast.error("Xatolik: " + error.message);
     } else {
-      console.log(formData.name, formData.address, formData.message);
-
-      alert("Ma'lumot yuborildi!");
+      toast.success("Ma'lumot yuborildi!");
       setFormData({ name: "", address: "", message: "" });
     }
   };
 
   return (
     <div className="w-full h-[92vh] mx-auto hom-con text-white p-5 sm:p-10 overflow-y-scroll">
+      <ToastContainer position="top-right" autoClose={3000} />
+
       <div className="AboutMe mb-10 sm:mb-16">
         <h1 className="text-center sm:text-left">Bog’lanish</h1>
         <div className="Contacs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          <div className="flex flex-col justify-center items-center gap-2 text-center p-4  rounded-lg shadow-md">
+          <div className="flex flex-col justify-center items-center gap-2 text-center p-4 rounded-lg shadow-md">
             <Image
               src="/Frame 11.svg"
               alt="logo"
@@ -50,7 +70,7 @@ export default function Contacts() {
               dasturchi59@gmail.com
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center gap-2 text-center p-4  rounded-lg shadow-md">
+          <div className="flex flex-col justify-center items-center gap-2 text-center p-4 rounded-lg shadow-md">
             <Image
               src="/Frame 11 (2).svg"
               alt="logo"
@@ -69,7 +89,7 @@ export default function Contacts() {
               </a>
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center gap-2 text-center p-4  rounded-lg shadow-md">
+          <div className="flex flex-col justify-center items-center gap-2 text-center p-4 rounded-lg shadow-md">
             <Image
               src="/Frame 11 (3).svg"
               alt="logo"
@@ -127,7 +147,7 @@ export default function Contacts() {
             ></textarea>
           </label>
           <button
-            onClick={() => handleChange()}
+            onClick={handleChange}
             className="p-2 bg-blue-600 hover:bg-blue-700 transition rounded-md text-white"
           >
             Yuborish

@@ -7,6 +7,9 @@
 * {
   outline: none;
 }
+button {
+  cursor: pointer;
+}
 
 html {
   scrollbar-width: none;

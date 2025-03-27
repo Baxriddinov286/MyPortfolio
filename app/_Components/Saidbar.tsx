@@ -42,7 +42,16 @@ export default function Saidbar() {
           />
           <div>
             <h4>Github</h4>
-            <h2>dasturchi59@gmail.com</h2>
+            <h2>
+              {" "}
+              <a
+                href="https://github.com/Baxriddinov286"
+                target="_blank"
+                className="text-blue-500 hover:underline"
+              >
+                @Baxriddinov286
+              </a>
+            </h2>
           </div>
         </div>
         <div className="MyAdrees">
