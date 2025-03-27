@@ -104,6 +104,12 @@ html {
 }
 
 .SaidbarBtn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.SaidbarBtn button {
   background: rgba(255, 255, 255, 0.1);
   padding: 6px 8px;
   border-radius: 8px;

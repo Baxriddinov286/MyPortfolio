@@ -16,6 +16,7 @@ export default function Saidbar() {
         <h1>Bekzod Baxriddinov</h1>
         <div className="SaidbarBtn">
           <button>Veb dasturchi</button>
+          <button>O`quvchi</button>
         </div>
       </div>
       <div className="p-3.5 space-y-4">
