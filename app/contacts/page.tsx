@@ -15,7 +15,7 @@ export default function Contacts() {
   const supabase = createClient();
 
   const handleChange = async () => {
-    let errors = [];
+    const errors: string[] = [];
 
     if (!formData.name.trim()) errors.push("Ismingizni kiriting!");
     if (!formData.address.trim()) errors.push("Manzilingizni kiriting!");
