@@ -60,12 +60,12 @@ export default function Page() {
         <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
           <h1 className="text-3xl font-semibold mb-4">Loyihalar</h1>
           <Link
-            href={"/admin/dashboard"}
+            href={"/admin/dashboard/project"}
             className="block text-center w-50 px-6 py-2 bg-blue-600 text-white rounded-lg"
           >
             Loyiha qo‘shish 🚀
           </Link>
-          <p className="mt-2">Chatlar: {chatCount}</p>
+          <p className="mt-2">Loyihlar: {chatCount}</p>
         </div>
 
         <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
