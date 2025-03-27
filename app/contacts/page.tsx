@@ -28,6 +28,17 @@ export default function Contacts() {
       errors.push("Email faqat @gmail.com bilan tugashi kerak!");
     }
 
+    if (
+      formData.address.includes("+") ||
+      formData.address.includes("-") ||
+      formData.address.includes("(") ||
+      formData.address.includes(")")
+    ) {
+      errors.push(
+        "Email manzilingizda qator o'rni, plus, minus, qavs bo'lmasligi kerak!"
+      );
+    }
+
     if (errors.length > 0) {
       toast.error(errors.join(" "));
       return;

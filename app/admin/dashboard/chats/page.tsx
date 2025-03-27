@@ -42,7 +42,7 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full h-[92vh] overflow-y-auto text-white p-5 md:p-10 bg-neutral-900">
+    <div className="w-full h-[92vh] hom-con overflow-y-auto text-white p-5 md:p-10 bg-neutral-900">
       <div className="mb-6 AboutMe flex justify-between items-center">
         <h1 className="text-3xl font-bold">Chatlar</h1>
         <button
