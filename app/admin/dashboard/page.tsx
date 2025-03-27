@@ -6,26 +6,36 @@ import React, { useEffect, useState } from "react";
 export default function Page() {
   const [insCount, setInsCount] = useState(0);
   const [chatCount, setChatCount] = useState(0);
+  const [projectCount, setProjectCount] = useState(0);
+  const [clientCount, setClientCount] = useState(0);
   const supabase = createClient();
 
   useEffect(() => {
     chatsCounts();
     InsCounts();
-  }, []);
+    clientsCounts();
+  }, [insCount, chatCount, projectCount, clientCount]);
 
   const InsCounts = async () => {
     const { data, error } = await supabase
       .from("Partfolio_Instrument")
       .select("*");
     if (!error) {
-      setChatCount(data.length);
+      setInsCount(data.length);
     }
   };
 
   const chatsCounts = async () => {
     const { data, error } = await supabase.from("PortfolioChats").select("*");
     if (!error) {
-      setInsCount(data.length);
+      setChatCount(data.length);
+    }
+  };
+
+  const clientsCounts = async () => {
+    const { data, error } = await supabase.from("Portfolio_Client").select("*");
+    if (!error) {
+      setClientCount(data.length);
     }
   };
 
@@ -71,14 +81,14 @@ export default function Page() {
         </div>
 
         <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-semibold mb-4">Yangi Mijozlar</h1>
+          <h1 className="text-3xl font-semibold mb-4">Mijozlar</h1>
           <Link
-            href={"/admin/dashboard"}
+            href={"/admin/dashboard/client"}
             className="block text-center w-50 px-6 py-2 bg-purple-600 text-white rounded-lg"
           >
             Mijoz qo'shish
           </Link>
-          <p className="mt-2">Chatlar: {chatCount}</p>
+          <p className="mt-2">Mijozalar: {clientCount}</p>
         </div>
       </div>
     </div>

@@ -8,36 +8,34 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 
-interface Instrument {
+interface Client {
   id?: number;
   img: string;
   name: string;
 }
 
-export default function Page() {
+export default function ClientsPage() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [formData, setFormData] = useState<Instrument>({ img: "", name: "" });
-  const [instruments, setInstruments] = useState<Instrument[]>([]);
+  const [formData, setFormData] = useState<Client>({ img: "", name: "" });
+  const [clients, setClients] = useState<Client[]>([]);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const router = useRouter();
   const supabase = createClient();
 
   useEffect(() => {
-    fetchInstruments();
+    fetchClients();
   }, []);
 
-  const fetchInstruments = async () => {
-    const { data, error } = await supabase
-      .from("Partfolio_Instrument")
-      .select("*");
+  const fetchClients = async () => {
+    const { data, error } = await supabase.from("Portfolio_Client").select("*");
     if (error) {
-      toast.error("Uskunalar yuklashda xatolik yuz berdi!");
+      toast.error("Mijozlarni yuklashda xatolik yuz berdi!");
     } else {
-      setInstruments(data);
+      setClients(data);
     }
   };
 
-  const handleSaveInstrument = async () => {
+  const handleSaveClient = async () => {
     if (!formData.img.trim() || !formData.name.trim()) {
       toast.error("Barcha maydonlarni to‘ldiring!");
       return;
@@ -45,17 +43,17 @@ export default function Page() {
 
     if (formData.id) {
       const { error } = await supabase
-        .from("Partfolio_Instrument")
+        .from("Portfolio_Client")
         .update({ img: formData.img, name: formData.name })
         .eq("id", formData.id);
 
       if (error) {
         toast.error("Xatolik yuz berdi!");
       } else {
-        toast.success("Uskuna yangilandi!");
+        toast.success("Mijoz yangilandi!");
       }
     } else {
-      const { error } = await supabase.from("Partfolio_Instrument").insert([
+      const { error } = await supabase.from("Portfolio_Client").insert([
         {
           img: formData.img,
           name: formData.name,
@@ -65,35 +63,35 @@ export default function Page() {
       if (error) {
         toast.error("Xatolik yuz berdi!");
       } else {
-        toast.success("Uskuna qo‘shildi!");
+        toast.success("Mijoz qo‘shildi!");
       }
     }
 
     setModalOpen(false);
     setFormData({ img: "", name: "" });
-    fetchInstruments();
+    fetchClients();
   };
 
-  const handleDeleteInstrument = async (id: number) => {
+  const handleDeleteClient = async (id: number) => {
     const { error } = await supabase
-      .from("Partfolio_Instrument")
+      .from("Portfolio_Client")
       .delete()
       .eq("id", id);
 
     if (error) {
       toast.error("Xatolik yuz berdi!");
     } else {
-      toast.success("Uskuna o‘chirildi!");
-      fetchInstruments();
+      toast.success("Mijoz o‘chirildi!");
+      fetchClients();
     }
   };
 
   return (
-    <div className="w-full h-[92vh] hom-con overflow-y-scroll text-white p-5 md:p-10">
+    <div className="w-full h-[92vh] overflow-y-scroll text-white p-5 md:p-10">
       <ToastContainer position="top-right" autoClose={3000} />
 
-      <div className="AboutMe mb-6 flex justify-between items-center">
-        <h1 className="text-3xl font-bold">Asbob uskunalar</h1>
+      <div className="AboutMe flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Mijozlar</h1>
         <div className="flex gap-2">
           <button
             onClick={() => {
@@ -102,13 +100,13 @@ export default function Page() {
             }}
             className="px-6 py-2 bg-green-600 text-white rounded-lg"
           >
-            Uskuna qo'shish+
+            Mijoz qo'shish+
           </button>
           <button
             onClick={() => router.push("/admin/dashboard")}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
-            Dasboard
+            Dashboard
           </button>
         </div>
       </div>
@@ -127,7 +125,7 @@ export default function Page() {
         }}
       >
         <h2 className="text-xl font-bold mb-4 text-center">
-          {formData.id ? "Uskunani tahrirlash" : "Uskuna qo‘shish"}
+          {formData.id ? "Mijozni tahrirlash" : "Mijoz qo‘shish"}
         </h2>
         <input
           type="text"
@@ -138,7 +136,7 @@ export default function Page() {
         />
         <input
           type="text"
-          placeholder="Uskuna nomi"
+          placeholder="Mijoz nomi"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="w-full p-2 mb-3 rounded bg-gray-700 border border-gray-600 text-white"
@@ -151,7 +149,7 @@ export default function Page() {
             Bekor qilish
           </button>
           <button
-            onClick={handleSaveInstrument}
+            onClick={handleSaveClient}
             className="px-4 py-2 bg-green-500 rounded-lg"
           >
             Saqlash
@@ -160,22 +158,22 @@ export default function Page() {
       </Rodal>
 
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5">
-        {instruments.map((instrument) => (
+        {clients.map((client) => (
           <div
-            key={instrument.id}
-            className="relative bg p-3 rounded-lg text-center"
-            onMouseEnter={() => setHoveredId(instrument.id!)}
+            key={client.id}
+            className="relative p-3 rounded-lg text-center bg-gray-800"
+            onMouseEnter={() => setHoveredId(client.id!)}
             onMouseLeave={() => setHoveredId(null)}
           >
             <div className="h-24 flex items-center justify-center">
-              {hoveredId === instrument.id ? (
+              {hoveredId === client.id ? (
                 <div className="w-full flex items-center justify-center text-white font-bold text-lg rounded-md">
-                  {instrument.name}
+                  {client.name}
                 </div>
               ) : (
                 <Image
-                  src={instrument.img}
-                  alt={instrument.name}
+                  src={client.img}
+                  alt={client.name}
                   width={100}
                   height={100}
                 />
@@ -184,14 +182,14 @@ export default function Page() {
 
             <div className="flex justify-between mt-2">
               <button
-                onClick={() => handleDeleteInstrument(instrument.id!)}
+                onClick={() => handleDeleteClient(client.id!)}
                 className="bg-red-600 px-3 py-1 rounded"
               >
                 🗑
               </button>
               <button
                 onClick={() => {
-                  setFormData(instrument);
+                  setFormData(client);
                   setModalOpen(true);
                 }}
                 className="bg-blue-600 px-3 py-1 rounded"

@@ -11,14 +11,24 @@ interface Instrument {
   name: string;
 }
 
+interface Client {
+  id?: number;
+  img: string;
+  name: string;
+}
+
 export default function About() {
   const [instruments, setInstruments] = useState<Instrument[]>([]);
+  const [clients, setClients] = useState<Client[]>([]);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [loadingInstruments, setLoadingInstruments] = useState(true);
+  const [loadingClients, setLoadingClients] = useState(true);
 
   const supabase = createClient();
 
   useEffect(() => {
     fetchInstruments();
+    fetchClients();
   }, []);
 
   const fetchInstruments = async () => {
@@ -30,7 +40,19 @@ export default function About() {
     } else {
       setInstruments(data);
     }
+    setLoadingInstruments(false);
   };
+
+  const fetchClients = async () => {
+    const { data, error } = await supabase.from("Portfolio_Client").select("*");
+    if (error) {
+      toast.error("Mijozlarni yuklashda xatolik yuz berdi!");
+    } else {
+      setClients(data);
+    }
+    setLoadingClients(false);
+  };
+
   return (
     <div className="w-full h-[92vh] mx-auto text-white overflow-y-scroll p-5 md:p-10">
       <ToastContainer position="top-right" autoClose={3000} />
@@ -62,27 +84,31 @@ export default function About() {
       <div className="AboutMe mb-12 md:mb-16">
         <h1 className="text-xl md:text-2xl lg:text-3xl">Asbob-uskunalar</h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5">
-          {instruments.map((instrument) => (
-            <div
-              key={instrument.id}
-              className="ProgramLogo "
-              onMouseEnter={() => setHoveredId(instrument.id!)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              {hoveredId === instrument.id ? (
-                <div className="w-full flex items-center justify-center text-white font-bold text-lg rounded-md">
-                  {instrument.name}
+          {loadingInstruments
+            ? Array.from({ length: 12 }).map((_, index) => (
+                <div key={index} className="ProgramLogo h-32"></div>
+              ))
+            : instruments.map((instrument) => (
+                <div
+                  key={instrument.id}
+                  className="ProgramLogo"
+                  onMouseEnter={() => setHoveredId(instrument.id!)}
+                  onMouseLeave={() => setHoveredId(null)}
+                >
+                  {hoveredId === instrument.id ? (
+                    <div className="w-full flex items-center justify-center text-white font-bold text-lg rounded-md">
+                      {instrument.name}
+                    </div>
+                  ) : (
+                    <Image
+                      src={instrument.img}
+                      alt={instrument.name}
+                      width={100}
+                      height={100}
+                    />
+                  )}
                 </div>
-              ) : (
-                <Image
-                  src={instrument.img}
-                  alt={instrument.name}
-                  width={100}
-                  height={100}
-                />
-              )}
-            </div>
-          ))}
+              ))}
         </div>
       </div>
 
@@ -126,57 +152,35 @@ export default function About() {
           ))}
         </div>
       </div>
+
       <div className="AboutMe mb-12 md:mb-16">
         <h1 className="text-xl md:text-2xl lg:text-3xl">Mijozlar </h1>
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
-          <div className="ProgramLogo">
-            <Image
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
-              alt="Html Logo"
-              width={64}
-              height={64}
-            />
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {loadingClients
+            ? Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="ProgramLogo h-32"></div>
+              ))
+            : clients.map((clients) => (
+                <div
+                  key={clients.id}
+                  className="ProgramLogo"
+                  onMouseEnter={() => setHoveredId(clients.id!)}
+                  onMouseLeave={() => setHoveredId(null)}
+                >
+                  {hoveredId === clients.id ? (
+                    <div className="w-full h-[100px] flex items-center justify-center text-white font-bold text-lg rounded-md">
+                      {clients.name}
+                    </div>
+                  ) : (
+                    <Image
+                      src={clients.img}
+                      alt={clients.name}
+                      width={100}
+                      height={100}
+                    />
+                  )}
+                </div>
+              ))}
         </div>
       </div>
     </div>
