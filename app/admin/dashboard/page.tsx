@@ -4,16 +4,19 @@ import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 
 export default function Page() {
-  const [insCount, setInsCount] = useState(0);
-  const [chatCount, setChatCount] = useState(0);
-  const [projectCount, setProjectCount] = useState(0);
-  const [clientCount, setClientCount] = useState(0);
+  const [insCount, setInsCount] = useState<number>(0);
+  const [chatCount, setChatCount] = useState<number>(0);
+  const [projectCount, setProjectCount] = useState<number>(0);
+  const [clientCount, setClientCount] = useState<number>(0);
   const supabase = createClient();
 
   const fetchCounts = useCallback(async () => {
-    const fetchData = async (table: any, setter: any) => {
+    const fetchData = async (
+      table: string,
+      setter: (value: number) => void
+    ) => {
       const { data, error } = await supabase.from(table).select("*");
-      if (!error) setter(data.length);
+      if (!error && data) setter(data.length);
     };
 
     await fetchData("Partfolio_Instrument", setInsCount);
@@ -73,7 +76,7 @@ export default function Page() {
             href={"/admin/dashboard/client"}
             className="block text-center w-50 px-6 py-2 bg-purple-600 text-white rounded-lg"
           >
-            Mijoz qo`&lsquo;`shish
+            Mijoz qo`shish
           </Link>
           <p className="mt-2">Mijozalar: {clientCount}</p>
         </div>
