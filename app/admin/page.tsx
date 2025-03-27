@@ -4,8 +4,10 @@ import React, { useState } from "react";
 export default function AdminRegister() {
   const [password, setPassword] = useState("");
 
+  const adminCode = process.env.NEXT_PUBLIC_ADMIN_CODE;
+
   const handleLogin = () => {
-    if (password === "admin123") {
+    if (password === adminCode) {
       location.href = "/admin/dashboard";
     } else {
       location.href = "/";
