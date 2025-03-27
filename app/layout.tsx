@@ -6,7 +6,7 @@ import Navbar from "./_Components/Navbar";
 // import localFont from "next/font/local";
 
 // const MyFOnt = localFont({
-//   src: "/public/fonts/NeueMachina-Ultrabold.otf",
+//   src: "/fonts/NeueMachina-Ultrabold.otf",
 //   display: "swap",
 // });
 

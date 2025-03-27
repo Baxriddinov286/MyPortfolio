@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
@@ -28,54 +29,62 @@ const Navbar = () => {
       </div>
 
       <div className="hidden lg:flex gap-6 font-medium text-lg">
-        <a href="/" className="info ">
+        <Link href="/" className="info ">
           Bosh sahifa
-        </a>
-        <a href="/about" className="info ">
+        </Link>
+        <Link href="/about" className="info ">
           Haqida
-        </a>
-        <a href="/projects" className="info ">
+        </Link>
+        <Link href="/projects" className="info ">
           Loyihalar
-        </a>
-        <a href="/contacts" className="info ">
+        </Link>
+        <Link href="/contacts" className="info ">
           Bog‘lanish
-        </a>
-        <a
-          href="https://github.com"
+        </Link>
+        <Link
+          href="https://github.com/Baxriddinov286"
           target="_blank"
           rel="noopener noreferrer"
           className="text-3xl cursor-pointer"
         >
           <FaGithub className="text-3xl cursor-pointer  " />
-        </a>
+        </Link>
       </div>
 
       {isOpen && (
         <div className="absolute top-14 left-0 w-full bg flex flex-col items-center gap-4 py-4 lg:hidden z-50">
-          <a href="/" className="info " onClick={() => setIsOpen(false)}>
+          <Link href="/" className="info " onClick={() => setIsOpen(false)}>
             Bosh sahifa
-          </a>
-          <a href="/about" className="info " onClick={() => setIsOpen(false)}>
+          </Link>
+          <Link
+            href="/about"
+            className="info "
+            onClick={() => setIsOpen(false)}
+          >
             Haqida
-          </a>
-          <a
+          </Link>
+          <Link
             href="/projects"
             className="info "
             onClick={() => setIsOpen(false)}
           >
             Loyihalar
-          </a>
-          <a href="/contacts" className="info" onClick={() => setIsOpen(false)}>
+          </Link>
+          <Link
+            href="/contacts"
+            className="info"
+            onClick={() => setIsOpen(false)}
+          >
             Bog‘lanish
-          </a>
-          <a
+          </Link>
+          <Link
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-3xl cursor-pointer"
           >
             <FaGithub />
-          </a>
+          </Link>
         </div>
       )}
     </nav>

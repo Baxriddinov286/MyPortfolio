@@ -1,7 +1,7 @@
 "use client";
 import { createClient } from "@/supabase/client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -22,18 +22,18 @@ export default function ClientsPage() {
   const router = useRouter();
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchClients();
-  }, []);
-
-  const fetchClients = async () => {
+  const fetchClients = useCallback(async () => {
     const { data, error } = await supabase.from("Portfolio_Client").select("*");
     if (error) {
       toast.error("Mijozlarni yuklashda xatolik yuz berdi!");
     } else {
       setClients(data);
     }
-  };
+  }, [supabase]);
+
+  useEffect(() => {
+    fetchClients();
+  }, [fetchClients]);
 
   const handleSaveClient = async () => {
     if (!formData.img.trim() || !formData.name.trim()) {
@@ -100,7 +100,7 @@ export default function ClientsPage() {
             }}
             className="px-6 py-2 bg-green-600 text-white rounded-lg"
           >
-            Mijoz qo'shish+
+            Mijoz qo`shish+
           </button>
           <button
             onClick={() => router.push("/admin/dashboard")}

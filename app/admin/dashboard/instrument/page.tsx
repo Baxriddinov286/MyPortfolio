@@ -1,7 +1,7 @@
 "use client";
 import { createClient } from "@/supabase/client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -22,11 +22,7 @@ export default function Page() {
   const router = useRouter();
   const supabase = createClient();
 
-  useEffect(() => {
-    fetchInstruments();
-  }, []);
-
-  const fetchInstruments = async () => {
+  const fetchInstruments = useCallback(async () => {
     const { data, error } = await supabase
       .from("Partfolio_Instrument")
       .select("*");
@@ -35,7 +31,11 @@ export default function Page() {
     } else {
       setInstruments(data);
     }
-  };
+  }, [supabase]);
+
+  useEffect(() => {
+    fetchInstruments();
+  }, [fetchInstruments]);
 
   const handleSaveInstrument = async () => {
     if (!formData.img.trim() || !formData.name.trim()) {
@@ -102,7 +102,7 @@ export default function Page() {
             }}
             className="px-6 py-2 bg-green-600 text-white rounded-lg"
           >
-            Uskuna qo'shish+
+            Uskuna qo`shish+
           </button>
           <button
             onClick={() => router.push("/admin/dashboard")}

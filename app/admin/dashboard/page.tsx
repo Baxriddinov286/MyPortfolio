@@ -14,6 +14,7 @@ export default function Page() {
     chatsCounts();
     InsCounts();
     clientsCounts();
+    projectsCounts();
   }, [insCount, chatCount, projectCount, clientCount]);
 
   const InsCounts = async () => {
@@ -39,6 +40,15 @@ export default function Page() {
     }
   };
 
+  const projectsCounts = async () => {
+    const { data, error } = await supabase
+      .from("Portfolio_Project")
+      .select("*");
+    if (!error) {
+      setProjectCount(data.length);
+    }
+  };
+
   return (
     <div className="w-full h-[92vh] hom-con overflow-y-scroll text-white p-5 md:p-10">
       <div className="AboutMe">
@@ -52,7 +62,7 @@ export default function Page() {
             href={"/admin/dashboard/instrument"}
             className="block text-center w-50 px-6 py-2 bg-green-600 text-white rounded-lg"
           >
-            Uskuna qo'shish
+            Uskuna qo`shish
           </Link>
           <p className="mt-2">Uskunalar: {insCount}</p>
         </div>
@@ -65,7 +75,7 @@ export default function Page() {
           >
             Loyiha qo‘shish 🚀
           </Link>
-          <p className="mt-2">Loyihlar: {chatCount}</p>
+          <p className="mt-2">Loyihlar: {projectCount}</p>
         </div>
 
         <div className="bg-neutral-800 p-6 rounded-2xl shadow-lg">
