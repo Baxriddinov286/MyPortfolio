@@ -3,12 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Saidbar from "./_Components/Saidbar";
 import Navbar from "./_Components/Navbar";
-// import localFont from "next/font/local";
-
-// const MyFOnt = localFont({
-//   src: "/fonts/NeueMachina-Ultrabold.otf",
-//   display: "swap",
-// });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg`}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased bg`}
       >
         <div className="max-w-[1535.3px] mx-auto ">
           <div className="mb-[56]">

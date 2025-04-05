@@ -82,7 +82,7 @@ export default function About() {
         </Link>
       </div>
       <div className="AboutMe mb-12 md:mb-16">
-        <h1 className="text-xl md:text-2xl lg:text-3xl">Asbob-uskunalar</h1>
+        <h1 className="text-xl md:text-2xl lg:text-3xl">Texnalogiyalar</h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-5">
           {loadingInstruments
             ? Array.from({ length: 12 }).map((_, index) => (
