@@ -171,7 +171,14 @@ export default function Page() {
                 <h3 className="text-white text-xl font-semibold">
                   {project.name}
                 </h3>
-                <p className="text-white text-sm mt-1">{project.level}</p>
+                <a
+                  href={project.level}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white text-sm mt-1 hover:underline"
+                >
+                  Saytni ko‘rish
+                </a>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {project.library.map((lib, index) => (
@@ -246,15 +253,13 @@ export default function Page() {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           className="w-full p-2 mb-3 rounded bg-gray-700 border border-gray-600 text-white"
         />
-        <select
+        <input
+          type="text"
+          placeholder="Url"
           value={formData.level}
           onChange={(e) => setFormData({ ...formData, level: e.target.value })}
           className="w-full p-2 mb-3 rounded bg-gray-700 border border-gray-600 text-white"
-        >
-          <option value="past">Past</option>
-          <option value="o‘rta">O‘rta</option>
-          <option value="yuqori">Yuqori</option>
-        </select>
+        />
 
         <div className="flex mb-3">
           <input

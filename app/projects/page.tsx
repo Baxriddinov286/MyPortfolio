@@ -60,7 +60,14 @@ export default function Projects() {
                     <h3 className="text-white text-xl font-semibold">
                       {project.name}
                     </h3>
-                    <p className="text-white text-sm mt-1">{project.level}</p>
+                    <a
+                      href={project.level}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white text-sm mt-1 hover:underline"
+                    >
+                      Saytni ko‘rish
+                    </a>
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {project.library.map((lib, index) => (
